@@ -11,9 +11,22 @@ h1 {
 }
 
 .container {
-    margin: o auto;
+    margin: 0px 5vw;
+    margin-top: 47px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+}
+
+.card {
+    width:117px;
+    height: 146px;
+    margin: 17px 17px;
+    background: #A7E9AF;
+    background-image: url(../Images/front.png);
+    background-size: cover;
+    
 }
 
 @media (max-width:414px) {

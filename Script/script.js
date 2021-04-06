@@ -1,1 +1,1 @@
-const numCards = (prompt("Com quantas cartas deseja jogar?");
+//const numCards = prompt("Com quantas cartas deseja jogar?");//
