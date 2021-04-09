@@ -26,7 +26,7 @@ function startGame(){
             listCard[i] = listCard[i-1]  
             j--
         } else {
-            listCard.push(`<li class="card" onclick='flipCards(this)'\><img class="back-face" src="../Images/${parrotList[j]}"><img class="front-face" src="../Images/front.png"></li>`);
+            listCard.push(`<li class="card" onclick='flipCards(this)'\><img class="back-face" src="Images/${parrotList[j]}"><img class="front-face" src="Images/front.png"></li>`);
         }
         j++
     }
