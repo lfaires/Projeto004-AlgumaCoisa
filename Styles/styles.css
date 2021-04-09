@@ -61,6 +61,7 @@ img {
 }
 
 section {
+    display: none;
     background: #A7E9AF;  
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
@@ -71,6 +72,10 @@ section {
     right: 10px;
     top: 10px;
     text-align: center;
+}
+
+.unhide {
+    display: block;
 }
 
 .timer {

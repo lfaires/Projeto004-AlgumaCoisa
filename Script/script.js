@@ -18,6 +18,8 @@ const idInterval = setInterval(increaseTime,1000)
 
 const time = document.querySelector(".timer")
 
+const sectionDisplay = document.querySelector("section")
+
 //Functions
 
 function askNumberOfCards(){
@@ -46,6 +48,7 @@ function shuffleCards() {
     for(let k=0;k<numCards;k++){
         numberOfList.innerHTML += listCard[k]
     }
+    sectionDisplay.classList.add("unhide")
 }
 
 function flipCards(flip) {
@@ -95,6 +98,7 @@ function finishGame(){
         alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas e ${finalTime} segundos!`)
         numberOfList.innerHTML = ""
         time.innerHTML = 0
+        sectionDisplay.classList.remove("unhide")
         /*restartGame()*/
     }
 }
@@ -102,6 +106,8 @@ function finishGame(){
 /*function restartGame() {
     const restart = prompt("Você gostaria de reiniciar o jogo? (Responsa apenas sim ou não)");
     if(restart === "sim"){
+        numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
+        remainder = numCards % 2;
         askNumberOfCards()
         startGame()
     }
