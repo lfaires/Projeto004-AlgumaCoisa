@@ -9,7 +9,7 @@ let numberOfCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
 let remainder = numberOfCards % 2;
 
     
-const parrotList = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif", "metalparrot.gif"]
+let parrotList = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif", "metalparrot.gif"]
 
 const numberOfList = document.querySelector(".game")
 
@@ -99,6 +99,9 @@ function finishGame(){
         setTimeout(alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas e ${finalTime} segundos!`),500) 
         numberOfList.innerHTML = ""
         time.innerHTML = 0
+        counter = 0;
+        j=0;
+        listCard = []
         sectionDisplay.classList.remove("unhide")
         restartGame()
     }
@@ -112,6 +115,8 @@ function restartGame() {
         idInterval = setInterval(increaseTime,1000);
         askNumberOfCards()
         startGame()
+    } else if (restart === "não") {
+        alert("Obrigado!")
     }
 }
 
