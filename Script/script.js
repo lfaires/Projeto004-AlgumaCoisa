@@ -16,7 +16,7 @@ startGame()
 function deckOfCards(){
 while (remainder !== 0 || numCards >14 || numCards <4){
     numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
-    remainder = pnumCards % 2;
+    remainder = numCards % 2;
 }
 }
 
@@ -65,13 +65,17 @@ function comparador() {
 
 function checkForMatch(){
     if (firstCard.innerHTML !== secondCard.innerHTML){ 
-        firstCard.classList.remove("flip")
-        secondCard.classList.remove("flip")
         unflipCards()
     } 
 }
 
+function removeFlip(){
+    firstCard.classList.remove("flip")
+    secondCard.classList.remove("flip")
+}
+
 function unflipCards(){
+    setTimeout(removeFlip,1500)
 }
 
 function playsCounter(){
@@ -90,6 +94,7 @@ function finishGame(){
 /*function restartGame() {
     const restart = prompt("Você gostaria de reiniciar o jogo? (Responsa apenas sim ou não)");
     if(restart === "sim"){
+        numCards=0;
         deckOfCards()
         startGame()
     }
