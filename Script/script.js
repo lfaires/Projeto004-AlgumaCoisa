@@ -1,24 +1,32 @@
-const numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
-const remainder = numCards % 2;
+//Variables
+
 let listCard = [];
 let j = 0;
+let counter = 0;
 let hasFlippedCard = false;
 let firstCard, secondCard;
+
+const numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
+const remainder = numCards % 2;
+    
+
 const parrotList = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif", "metalparrot.gif"]
+
 const numberOfList = document.querySelector(".game")
-let counter = 0;
 
-deckOfCards()
-startGame()
+const idInterval = setInterval(increaseTime,1000)
 
+const time = document.querySelector(".timer")
 
-function deckOfCards(){
-while (remainder !== 0 || numCards >14 || numCards <4){
-    numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
-    remainder = numCards % 2;
+//Functions
+
+function askNumberOfCards(){
+    while (remainder !== 0 || numCards >14 || numCards <4){
+        numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
+        remainder = numCards % 2;
+    }
 }
-}
-
+ 
 function startGame(){
     for(let i=0;i<numCards;i++){    
         if (i%2 !== 0){
@@ -30,7 +38,6 @@ function startGame(){
         j++
     }
     shuffleCards()
-    timer()
 }
 
 function shuffleCards() {
@@ -83,28 +90,29 @@ function playsCounter(){
 }
 
 function finishGame(){
-    let li = document.querySelectorAll(".flip")
-    if(li.length === numCards){
-        alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas e segundos!`)
-        restartGame()
+    let allFlippedCards = document.querySelectorAll(".flip")
+    if(allFlippedCards.length === numCards){
         clearInterval(idInterval)
+        const finalTime = time.innerHTML;
+        alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas e ${finalTime} segundos!`)
+        /*restartGame()*/
     }
 }
 
 /*function restartGame() {
     const restart = prompt("Você gostaria de reiniciar o jogo? (Responsa apenas sim ou não)");
     if(restart === "sim"){
-        numCards=0;
-        deckOfCards()
+        askNumberOfCards()
         startGame()
     }
 }*/
 
 function increaseTime(){
-   const time = document.querySelector(".timer")
     time.innerHTML ++;
 }
 
-function timer(){
-    let idInterval = setInterval(increaseTime,1000)
-}        
+
+// Functions running
+
+askNumberOfCards()
+startGame()
