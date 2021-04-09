@@ -5,16 +5,15 @@ let j = 0;
 let counter = 0;
 let hasFlippedCard = false;
 let firstCard, secondCard;
+let numberOfCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
+let remainder = numberOfCards % 2;
 
-const numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
-const remainder = numCards % 2;
     
-
 const parrotList = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif", "metalparrot.gif"]
 
 const numberOfList = document.querySelector(".game")
 
-const idInterval = setInterval(increaseTime,1000)
+let idInterval = setInterval(increaseTime,1000)
 
 const time = document.querySelector(".timer")
 
@@ -22,16 +21,19 @@ const sectionDisplay = document.querySelector("section")
 
 //Functions
 
+askNumberOfCards()
+startGame()
+
 function askNumberOfCards(){
-    while (remainder !== 0 || numCards >14 || numCards <4){
-        numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
-        remainder = numCards % 2;
+    while (remainder !== 0 || numberOfCards >14 || numberOfCards <4){
+        numberOfCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
+        remainder = numberOfCards % 2;
     }
 }
  
 function startGame(){
     parrotList.sort(comparador)
-    for(let i=0;i<numCards;i++){    
+    for(let i=0;i<numberOfCards;i++){    
         if (i%2 !== 0){
             listCard[i] = listCard[i-1]  
             j--
@@ -45,7 +47,7 @@ function startGame(){
 
 function shuffleCards() {
     listCard.sort(comparador);
-    for(let k=0;k<numCards;k++){
+    for(let k=0;k<numberOfCards;k++){
         numberOfList.innerHTML += listCard[k]
     }
     sectionDisplay.classList.add("unhide")
@@ -60,7 +62,6 @@ function flipCards(flip) {
     } else {
         hasFlippedCard = false;
         secondCard = flip;
-        console.log({hasFlippedCard,firstCard,secondCard})
         checkForMatch()
         playsCounter()
     }
@@ -92,26 +93,27 @@ function playsCounter(){
 
 function finishGame(){
     let allFlippedCards = document.querySelectorAll(".flip")
-    if(allFlippedCards.length === numCards){
+    if(allFlippedCards.length === numberOfCards){
         clearInterval(idInterval)
         const finalTime = time.innerHTML;
-        alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas e ${finalTime} segundos!`)
+        setTimeout(alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas e ${finalTime} segundos!`),500) 
         numberOfList.innerHTML = ""
         time.innerHTML = 0
         sectionDisplay.classList.remove("unhide")
-        /*restartGame()*/
+        restartGame()
     }
 }
 
-/*function restartGame() {
+function restartGame() {
     const restart = prompt("Você gostaria de reiniciar o jogo? (Responsa apenas sim ou não)");
     if(restart === "sim"){
-        numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
-        remainder = numCards % 2;
+        numberOfCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
+        remainder = numberOfCards % 2;
+        idInterval = setInterval(increaseTime,1000);
         askNumberOfCards()
         startGame()
     }
-}*/
+}
 
 function increaseTime(){
     time.innerHTML ++;
@@ -120,5 +122,3 @@ function increaseTime(){
 
 // Functions running
 
-askNumberOfCards()
-startGame()

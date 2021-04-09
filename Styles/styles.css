@@ -15,7 +15,8 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 30px 40px;
+    width: 70vw;
+    margin: 30px auto;
 }
 
 .card {
@@ -28,7 +29,7 @@ h1 {
     justify-content: center;
     border-radius: 5px; 
     position: relative;
-    border: 2px solid lime;
+    border: 1px solid #99CEA8;
     transition: all .5s;
     transform-style: preserve-3d;
 }
@@ -68,7 +69,7 @@ section {
     color: #5C913B;
     padding: 20px;
     border-radius: 5px;
-    position: absolute;
+    position: fixed;
     right: 10px;
     top: 10px;
     text-align: center;
@@ -96,7 +97,7 @@ section {
     }
 
     section {
-        top: 80px;
+        top: 1px;
         padding: 7px;
     }
 
