@@ -9,19 +9,18 @@ const numberOfList = document.querySelector(".game")
 parrotList.sort(comparador)
 let counter = 0;
 
-playGame()
-deckCards()
-shuffleCards()
+deckOfCards()
+startGame()
 
 
-function deckCards(){
+function deckOfCards(){
 while (remainder !== 0 || numCards >14 || numCards <4){
     numCards = parseInt(prompt("Com quantas cartas deseja jogar?"));
     remainder = pnumCards % 2;
 }
 }
 
-function playGame(){
+function startGame(){
     for(let i=0;i<numCards;i++){    
         if (i%2 !== 0){
             listCard[i] = listCard[i-1]  
@@ -31,6 +30,7 @@ function playGame(){
         }
         j++
     }
+    shuffleCards()
 }
 
 
@@ -76,4 +76,21 @@ function unflipCards(){
 
 function playsCounter(){
     counter++
+    finishGame()
 }
+
+function finishGame(){
+    let li = document.querySelectorAll(".flip")
+    if(li.length === numCards){
+        alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas!`)
+        restartGame()
+    }
+}
+
+/*function restartGame() {
+    const restart = prompt("Você gostaria de reiniciar o jogo? (Responsa apenas sim ou não)");
+    if(restart === "sim"){
+        deckOfCards()
+        startGame()
+    }
+}*/
