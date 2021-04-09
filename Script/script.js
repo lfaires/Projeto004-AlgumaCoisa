@@ -6,7 +6,6 @@ let hasFlippedCard = false;
 let firstCard, secondCard;
 const parrotList = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif", "metalparrot.gif"]
 const numberOfList = document.querySelector(".game")
-parrotList.sort(comparador)
 let counter = 0;
 
 deckOfCards()
@@ -31,16 +30,16 @@ function startGame(){
         j++
     }
     shuffleCards()
+    timer()
 }
 
-
 function shuffleCards() {
+    parrotList.sort(comparador)
     listCard.sort(comparador);
     for(let k=0;k<numCards;k++){
         numberOfList.innerHTML += listCard[k]
     }
 }
-
 
 function flipCards(flip) {
     flip.classList.add("flip")
@@ -75,7 +74,7 @@ function removeFlip(){
 }
 
 function unflipCards(){
-    setTimeout(removeFlip,1500)
+    setTimeout(removeFlip,1000)
 }
 
 function playsCounter(){
@@ -86,8 +85,9 @@ function playsCounter(){
 function finishGame(){
     let li = document.querySelectorAll(".flip")
     if(li.length === numCards){
-        alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas!`)
+        alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas e segundos!`)
         restartGame()
+        clearInterval(idInterval)
     }
 }
 
@@ -99,3 +99,12 @@ function finishGame(){
         startGame()
     }
 }*/
+
+function increaseTime(){
+   const time = document.querySelector(".timer")
+    time.innerHTML ++;
+}
+
+function timer(){
+    let idInterval = setInterval(increaseTime,1000)
+}        
