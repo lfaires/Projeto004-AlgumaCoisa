@@ -28,6 +28,7 @@ function askNumberOfCards(){
 }
  
 function startGame(){
+    parrotList.sort(comparador)
     for(let i=0;i<numCards;i++){    
         if (i%2 !== 0){
             listCard[i] = listCard[i-1]  
@@ -41,7 +42,6 @@ function startGame(){
 }
 
 function shuffleCards() {
-    parrotList.sort(comparador)
     listCard.sort(comparador);
     for(let k=0;k<numCards;k++){
         numberOfList.innerHTML += listCard[k]
@@ -54,7 +54,6 @@ function flipCards(flip) {
     if(!hasFlippedCard){
         hasFlippedCard = true;
         firstCard = flip;
-
     } else {
         hasFlippedCard = false;
         secondCard = flip;
@@ -62,7 +61,6 @@ function flipCards(flip) {
         checkForMatch()
         playsCounter()
     }
-  
 }
 
 function comparador() { 
@@ -95,6 +93,8 @@ function finishGame(){
         clearInterval(idInterval)
         const finalTime = time.innerHTML;
         alert(`Parabéns! Você ganhou o jogo em ${counter} jogadas e ${finalTime} segundos!`)
+        numberOfList.innerHTML = ""
+        time.innerHTML = 0
         /*restartGame()*/
     }
 }
